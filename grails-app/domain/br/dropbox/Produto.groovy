@@ -3,7 +3,10 @@ package br.dropbox
 class Produto {
 
     static hasMany = Critica
-    
+    static mapping =
+    {
+         tablePerHierarchy false
+    }
     static constraints = {
         titulo(blank:false)
         id(blank:false)

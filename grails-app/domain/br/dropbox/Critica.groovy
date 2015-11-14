@@ -7,7 +7,7 @@ class Critica {
         comentario(size: 5..100)
     }
     
-    float classificacao
+    float classificacao //colocar int e note do produto final e soma das notas crit div pelo num de crit
     String comentario
     Usuario autor
 }

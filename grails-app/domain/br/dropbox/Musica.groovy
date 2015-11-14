@@ -1,6 +1,6 @@
 package br.dropbox
 
-class Musica {
+class Musica extends Produto {
     static belongsTo = [generom:GeneroMusica, distribuidoras:Distribuidora, albuns:Album]
     static constraints = {
     }
