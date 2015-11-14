@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ProdutoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -25,52 +25,80 @@ class ProdutoController {
 
     @Transactional
     def save(Produto produtoInstance) {
-        if (produtoInstance == null) {
-            notFound()
+               
+        def produtoFile = request.getFile('imagem')
+        
+        if(!produtoFile.empty)
+            produtoInstance.nomeImg = produtoFile.originalFilename
+        
+        if (!produtoInstance.save(flush: true)) {
+            render(view: "create", model: [produtoInstance: produtoInstance])
             return
         }
-
-        if (produtoInstance.hasErrors()) {
-            respond produtoInstance.errors, view:'create'
-            return
+        
+        def webRootDir = servletContext.getRealPath("/")
+        def produtoDir = new File(webRootDir, "/Produto/${produtoInstance.id}")
+        produtoDir.mkdirs()
+        
+        if(!produtoFile.empty){
+            produtoFile.transferTo( new File( produtoDir, produtoFile.originalFilename))
         }
-
-        produtoInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'produto.label', default: 'Produto'), produtoInstance.id])
-                redirect produtoInstance
-            }
-            '*' { respond produtoInstance, [status: CREATED] }
-        }
+        
+        flash.message = message(code: 'default.created.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
+        redirect(action: "show", id: produtoInstance.id)
     }
 
     def edit(Produto produtoInstance) {
-        respond produtoInstance
+
+        if (!produtoInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Produto.label', default: 'Produto'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [produtoInstance: produtoInstance]
     }
 
     @Transactional
     def update(Produto produtoInstance) {
-        if (produtoInstance == null) {
-            notFound()
+     
+        if (!produtoInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Produto.label', default: 'Produto'), id])
+            redirect(action: "list")
             return
         }
 
-        if (produtoInstance.hasErrors()) {
-            respond produtoInstance.errors, view:'edit'
-            return
-        }
-
-        produtoInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
-                redirect produtoInstance
+        if (version != null) {
+            if (produtoInstance.version > version) {
+                produtoInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                    [message(code: 'Produto.label', default: 'Produto')] as Object[],
+                          "Another user has updated this Produto while you were editing")
+                render(view: "edit", model: [produtoInstance: produtoInstance])
+                return
             }
-            '*'{ respond produtoInstance, [status: OK] }
         }
+                
+        def produtoFile = request.getFile('imagem')
+        
+        if(!produtoFile.empty)
+            produtoInstance.nomeImg = produtoFile.originalFilename
+        
+        if (!produtoInstance.save(flush: true)) {
+            render(view: "create", model: [produtoInstance: produtoInstance])
+            return
+        }
+        
+        def webRootDir = servletContext.getRealPath("/")
+        def produtoDir = new File(webRootDir, "/Produto/${produtoInstance.id}")
+        produtoDir.mkdirs()
+        
+        if(!produtoFile.empty){
+            produtoFile.transferTo( new File( produtoDir, produtoFile.originalFilename))
+        }
+        
+        flash.message = message(code: 'default.created.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
+        redirect(action: "show", id: produtoInstance.id)
+        
     }
 
     @Transactional

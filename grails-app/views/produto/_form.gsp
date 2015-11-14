@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'ano', 'error')} required">
-	<label for="ano">
-		<g:message code="produto.ano.label" default="Ano" />
+<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'titulo', 'error')} required">
+	<label for="titulo">
+		<g:message code="produto.titulo.label" default="Titulo" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="ano" type="number" value="${produtoInstance.ano}" required=""/>
+	<g:textField name="titulo" required="" value="${produtoInstance?.titulo}"/>
 
 </div>
 
@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'valorUnitario', 'error')} required">
+	<label for="valorUnitario">
+		<g:message code="produto.valorUnitario.label" default="Valor Unitario" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="valorUnitario" value="${fieldValue(bean: produtoInstance, field: 'valorUnitario')}" required=""/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'nota', 'error')} required">
 	<label for="nota">
 		<g:message code="produto.nota.label" default="Nota" />
@@ -29,21 +38,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'titulo', 'error')} required">
-	<label for="titulo">
-		<g:message code="produto.titulo.label" default="Titulo" />
+<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'ano', 'error')} required">
+	<label for="ano">
+		<g:message code="produto.ano.label" default="Ano" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="titulo" required="" value="${produtoInstance?.titulo}"/>
+	<g:field name="ano" type="number" min="1500" value="${produtoInstance.ano}" required=""/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'valorUnitario', 'error')} required">
-	<label for="valorUnitario">
-		<g:message code="produto.valorUnitario.label" default="Valor Unitario" />
+<div class="fieldcontain ${hasErrors(bean: produtoInstance, field: 'nomeImg', 'error')} required">
+	<label for="nomeImg">
+		<g:message code="produto.nomeImg.label" default="Nome Img" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="valorUnitario" value="${fieldValue(bean: produtoInstance, field: 'valorUnitario')}" required=""/>
-
+	<g:textField name="nomeImg" required="" value="${produtoInstance?.nomeImg}"/>
+        <input type = "file" name="imagem"/>
 </div>
 

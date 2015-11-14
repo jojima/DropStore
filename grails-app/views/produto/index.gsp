@@ -24,32 +24,39 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="ano" title="${message(code: 'produto.ano.label', default: 'Ano')}" />
+						<g:sortableColumn property="titulo" title="${message(code: 'produto.titulo.label', default: 'Titulo')}" />
 					
 						<g:sortableColumn property="descricao" title="${message(code: 'produto.descricao.label', default: 'Descricao')}" />
 					
-						<g:sortableColumn property="nota" title="${message(code: 'produto.nota.label', default: 'Nota')}" />
-					
-						<g:sortableColumn property="titulo" title="${message(code: 'produto.titulo.label', default: 'Titulo')}" />
-					
 						<g:sortableColumn property="valorUnitario" title="${message(code: 'produto.valorUnitario.label', default: 'Valor Unitario')}" />
 					
+						<g:sortableColumn property="nota" title="${message(code: 'produto.nota.label', default: 'Nota')}" />
+					
+						<g:sortableColumn property="ano" title="${message(code: 'produto.ano.label', default: 'Ano')}" />
+					
+						<g:sortableColumn property="nomeImg" title="${message(code: 'produto.nomeImg.label', default: 'Nome Img')}" />
+                                                    				
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${produtoInstanceList}" status="i" var="produtoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${produtoInstance.id}">${fieldValue(bean: produtoInstance, field: "ano")}</g:link></td>
+						<td><g:link action="show" id="${produtoInstance.id}">${fieldValue(bean: produtoInstance, field: "titulo")}</g:link></td>
 					
 						<td>${fieldValue(bean: produtoInstance, field: "descricao")}</td>
 					
-						<td>${fieldValue(bean: produtoInstance, field: "nota")}</td>
-					
-						<td>${fieldValue(bean: produtoInstance, field: "titulo")}</td>
-					
 						<td>${fieldValue(bean: produtoInstance, field: "valorUnitario")}</td>
 					
+						<td>${fieldValue(bean: produtoInstance, field: "nota")}</td>
+					
+						<td>${fieldValue(bean: produtoInstance, field: "ano")}</td>
+					
+						<td>${fieldValue(bean: produtoInstance, field: "nomeImg")}</td>
+                                                
+						<td> 
+                                                    <img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" width="60" height="60" />
+                                                </td>
 					</tr>
 				</g:each>
 				</tbody>

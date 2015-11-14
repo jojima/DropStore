@@ -22,4 +22,5 @@ class Produto {
     float valorUnitario
     float nota
     int ano
+    String nomeImg
 }

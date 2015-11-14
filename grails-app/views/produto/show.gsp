@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list produto">
 			
-				<g:if test="${produtoInstance?.ano}">
+				<g:if test="${produtoInstance?.titulo}">
 				<li class="fieldcontain">
-					<span id="ano-label" class="property-label"><g:message code="produto.ano.label" default="Ano" /></span>
+					<span id="titulo-label" class="property-label"><g:message code="produto.titulo.label" default="Titulo" /></span>
 					
-						<span class="property-value" aria-labelledby="ano-label"><g:fieldValue bean="${produtoInstance}" field="ano"/></span>
+						<span class="property-value" aria-labelledby="titulo-label"><g:fieldValue bean="${produtoInstance}" field="titulo"/></span>
 					
 				</li>
 				</g:if>
@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${produtoInstance?.valorUnitario}">
+				<li class="fieldcontain">
+					<span id="valorUnitario-label" class="property-label"><g:message code="produto.valorUnitario.label" default="Valor Unitario" /></span>
+					
+						<span class="property-value" aria-labelledby="valorUnitario-label"><g:fieldValue bean="${produtoInstance}" field="valorUnitario"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${produtoInstance?.nota}">
 				<li class="fieldcontain">
 					<span id="nota-label" class="property-label"><g:message code="produto.nota.label" default="Nota" /></span>
@@ -50,20 +59,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${produtoInstance?.titulo}">
+				<g:if test="${produtoInstance?.ano}">
 				<li class="fieldcontain">
-					<span id="titulo-label" class="property-label"><g:message code="produto.titulo.label" default="Titulo" /></span>
+					<span id="ano-label" class="property-label"><g:message code="produto.ano.label" default="Ano" /></span>
 					
-						<span class="property-value" aria-labelledby="titulo-label"><g:fieldValue bean="${produtoInstance}" field="titulo"/></span>
+						<span class="property-value" aria-labelledby="ano-label"><g:fieldValue bean="${produtoInstance}" field="ano"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${produtoInstance?.valorUnitario}">
+				<g:if test="${produtoInstance?.nomeImg}">
 				<li class="fieldcontain">
-					<span id="valorUnitario-label" class="property-label"><g:message code="produto.valorUnitario.label" default="Valor Unitario" /></span>
+					<span id="nomeImg-label" class="property-label"><g:message code="produto.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="valorUnitario-label"><g:fieldValue bean="${produtoInstance}" field="valorUnitario"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" width="120" height="120" ></img></span>
 					
 				</li>
 				</g:if>
