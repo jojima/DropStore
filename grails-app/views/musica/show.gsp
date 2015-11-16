@@ -104,6 +104,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicaInstance?.nomeImg}">
+				<li class="fieldcontain">
+					<span id="nomeImg-label" class="property-label"><g:message code="musica.nomeImg.label" default="Nome Img" /></span>
+					
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${musicaInstance}" field="nomeImg"/></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:musicaInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -86,6 +86,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${ebookInstance?.nomeImg}">
+				<li class="fieldcontain">
+					<span id="nomeImg-label" class="property-label"><g:message code="ebook.nomeImg.label" default="Nome Img" /></span>
+					
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${ebookInstance}" field="nomeImg"/></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:ebookInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

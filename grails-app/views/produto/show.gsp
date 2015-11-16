@@ -68,12 +68,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${produtoInstance?.nomeImg}">
+				<g:if test="${atorInstance?.foto}">
 				<li class="fieldcontain">
-					<span id="nomeImg-label" class="property-label"><g:message code="produto.nomeImg.label" default="Nome Img" /></span>
+					<span id="foto-label" class="property-label"><g:message code="Produto.nomeImg.label" default="Produto" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" width="120" height="120" ></img></span>
-					
+						<span class="property-value" aria-labelledby="nomeImg-label">
+                                                    <img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" alt="${produtoInstance.nomeImg}" title="${produtoInstance.nomeImg}" width="120px" height="120px"/></span>
 				</li>
 				</g:if>
 			

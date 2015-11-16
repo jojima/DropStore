@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'produto.label', default: 'Produto')}" />
+		<g:set var="entityName" value="${message(code: 'Produto.label', default: 'Produto')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -25,7 +25,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:produtoInstance, action:'save']" enctype="multipart/form-data">
+			<g:form url="[resource:atorInstance, action:'save']" enctype="multipart/form-data">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

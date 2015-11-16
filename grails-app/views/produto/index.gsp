@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'produto.label', default: 'Produto')}" />
+		<g:set var="entityName" value="${message(code: 'Produto.label', default: 'Produto')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -55,7 +55,7 @@
 						<td>${fieldValue(bean: produtoInstance, field: "nomeImg")}</td>
                                                 
 						<td> 
-                                                    <img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" width="60" height="60" />
+                                                    <img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" width="60px" height="60px" />
                                                 </td>
 					</tr>
 				</g:each>

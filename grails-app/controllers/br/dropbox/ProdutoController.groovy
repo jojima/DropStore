@@ -10,6 +10,7 @@ class ProdutoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Produto.list(params), model:[produtoInstanceCount: Produto.count()]
@@ -24,8 +25,10 @@ class ProdutoController {
     }
 
     @Transactional
-    def save(Produto produtoInstance) {
-               
+    def save() {
+        
+        def produtoInstance = new Produto(params)
+        
         def produtoFile = request.getFile('imagem')
         
         if(!produtoFile.empty)
@@ -46,10 +49,13 @@ class ProdutoController {
         
         flash.message = message(code: 'default.created.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
         redirect(action: "show", id: produtoInstance.id)
+        
     }
 
-    def edit(Produto produtoInstance) {
-
+    def edit(long id) {
+        
+        def produtoInstance = Produto.get(id)
+        
         if (!produtoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'Produto.label', default: 'Produto'), id])
             redirect(action: "list")
@@ -60,8 +66,10 @@ class ProdutoController {
     }
 
     @Transactional
-    def update(Produto produtoInstance) {
-     
+    def update(Long id,Long version) {
+      
+        def produtoInstance = Produto.get(id)
+        
         if (!produtoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'Produto.label', default: 'Produto'), id])
             redirect(action: "list")
@@ -123,7 +131,7 @@ class ProdutoController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'produto.label', default: 'Produto'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'Produto.label', default: 'Produto'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
