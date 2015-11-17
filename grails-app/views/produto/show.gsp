@@ -68,7 +68,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${atorInstance?.foto}">
+				<g:if test="${produtoInstance?.nomeImg}">
 				<li class="fieldcontain">
 					<span id="foto-label" class="property-label"><g:message code="Produto.nomeImg.label" default="Produto" /></span>
 					

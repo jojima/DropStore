@@ -90,7 +90,8 @@
 				<li class="fieldcontain">
 					<span id="nomeImg-label" class="property-label"><g:message code="filme.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${filmeInstance}" field="nomeImg"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${filmeInstance}" field="nomeImg"/>
+                                                    <img src="${createLinkTo(dir:'Filme/'+ filmeInstance.id, file:''+filmeInstance.nomeImg)}" alt="${filmeInstance.nomeImg}" title="${filmeInstance.nomeImg}" width="120px" height="120px"/></span>
 					
 				</li>
 				</g:if>

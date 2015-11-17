@@ -108,7 +108,8 @@
 				<li class="fieldcontain">
 					<span id="nomeImg-label" class="property-label"><g:message code="musica.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${musicaInstance}" field="nomeImg"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${musicaInstance}" field="nomeImg"/>
+                                                    <img src="${createLinkTo(dir:'Musica/'+ musicaInstance.id, file:''+musicaInstance.nomeImg)}" alt="${musicaInstance.nomeImg}" title="${musicaInstance.nomeImg}" width="120px" height="120px"/></span>
 					
 				</li>
 				</g:if>

@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class FilmeController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,53 +24,86 @@ class FilmeController {
     }
 
     @Transactional
-    def save(Filme filmeInstance) {
-        if (filmeInstance == null) {
-            notFound()
+    def save() {
+       def filmeInstance = new Filme(params)
+        
+        def filmeFile = request.getFile('imagem')
+        
+        if(!filmeFile.empty)
+            filmeInstance.nomeImg = filmeFile.originalFilename
+        
+        if (!filmeInstance.save(flush: true)) {
+            render(view: "create", model: [filmeInstance: filmeInstance])
             return
         }
-
-        if (filmeInstance.hasErrors()) {
-            respond filmeInstance.errors, view:'create'
-            return
+        
+        def webRootDir = servletContext.getRealPath("/")
+        def filmeDir = new File(webRootDir, "/Filme/${filmeInstance.id}")
+        filmeDir.mkdirs()
+        
+        if(!filmeFile.empty){
+            filmeFile.transferTo( new File( filmeDir, filmeFile.originalFilename))
         }
-
-        filmeInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'filme.label', default: 'Filme'), filmeInstance.id])
-                redirect filmeInstance
-            }
-            '*' { respond filmeInstance, [status: CREATED] }
-        }
+        
+        flash.message = message(code: 'default.created.message', args: [message(code: 'Filme.label', default: 'Filme'), filmeInstance.id])
+        redirect(action: "show", id: filmeInstance.id)
+        
     }
 
-    def edit(Filme filmeInstance) {
-        respond filmeInstance
+    def edit(long id) {
+        
+        def filmeInstance = Filme.get(id)
+        
+        if (!filmeInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Filme.label', default: 'Filme'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [filmeInstance: filmeInstance]
     }
 
     @Transactional
-    def update(Filme filmeInstance) {
-        if (filmeInstance == null) {
-            notFound()
+    def update(long id, long version) {
+        
+        def filmeInstance = Filme.get(id)
+        
+        if (!filmeInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Filme.label', default: 'Filme'), id])
+            redirect(action: "list")
             return
         }
 
-        if (filmeInstance.hasErrors()) {
-            respond filmeInstance.errors, view:'edit'
-            return
-        }
-
-        filmeInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Filme.label', default: 'Filme'), filmeInstance.id])
-                redirect filmeInstance
+        if (version != null) {
+            if (filmeInstance.version > version) {
+                filmeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                    [message(code: 'Filme.label', default: 'Filme')] as Object[],
+                          "Another user has updated this Filme while you were editing")
+                render(view: "edit", model: [filmeInstance: filmeInstance])
+                return
             }
-            '*'{ respond filmeInstance, [status: OK] }
         }
+                
+        def filmeFile = request.getFile('imagem')
+        
+        if(!filmeFile.empty)
+            filmeInstance.nomeImg = filmeFile.originalFilename
+        
+        if (!filmeInstance.save(flush: true)) {
+            render(view: "create", model: [filmeInstance: filmeInstance])
+            return
+        }
+        
+        def webRootDir = servletContext.getRealPath("/")
+        def filmeDir = new File(webRootDir, "/Filme/${filmeInstance.id}")
+        filmeDir.mkdirs()
+        
+        if(!filmeFile.empty){
+            filmeFile.transferTo( new File( filmeDir, filmeFile.originalFilename))
+        }
+        
+        flash.message = message(code: 'default.created.message', args: [message(code: 'Filme.label', default: 'Filme'), filmeInstance.id])
+        redirect(action: "show", id: filmeInstance.id)
     }
 
     @Transactional

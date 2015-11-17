@@ -10,7 +10,6 @@ class ProdutoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
-
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Produto.list(params), model:[produtoInstanceCount: Produto.count()]
@@ -66,7 +65,7 @@ class ProdutoController {
     }
 
     @Transactional
-    def update(Long id,Long version) {
+    def update(long id,long version) {
       
         def produtoInstance = Produto.get(id)
         

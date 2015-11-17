@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EbookController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,53 +24,86 @@ class EbookController {
     }
 
     @Transactional
-    def save(Ebook ebookInstance) {
-        if (ebookInstance == null) {
-            notFound()
+    def save() {
+        def ebookInstance = new Ebook(params)
+        
+        def ebookFile = request.getFile('imagem')
+        
+        if(!ebookFile.empty)
+            ebookInstance.nomeImg = ebookFile.originalFilename
+        
+        if (!ebookInstance.save(flush: true)) {
+            render(view: "create", model: [ebookInstance: ebookInstance])
             return
         }
-
-        if (ebookInstance.hasErrors()) {
-            respond ebookInstance.errors, view:'create'
-            return
+        
+        def webRootDir = servletContext.getRealPath("/")
+        def ebookDir = new File(webRootDir, "/Ebook/${ebookInstance.id}")
+        ebookDir.mkdirs()
+        
+        if(!ebookFile.empty){
+            ebookFile.transferTo( new File( ebookDir, ebookFile.originalFilename))
         }
-
-        ebookInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'ebook.label', default: 'Ebook'), ebookInstance.id])
-                redirect ebookInstance
-            }
-            '*' { respond ebookInstance, [status: CREATED] }
-        }
+        
+        flash.message = message(code: 'default.created.message', args: [message(code: 'Ebook.label', default: 'Ebook'), ebookInstance.id])
+        redirect(action: "show", id: ebookInstance.id)
+        
     }
 
-    def edit(Ebook ebookInstance) {
-        respond ebookInstance
+    def edit(long id) {
+        
+        def ebookInstance = Ebook.get(id)
+        
+        if (!ebookInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Ebook.label', default: 'Ebook'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [ebookInstance: ebookInstance]
     }
 
     @Transactional
-    def update(Ebook ebookInstance) {
-        if (ebookInstance == null) {
-            notFound()
+    def update(long id, long version) {
+        
+        def ebookInstance = Ebook.get(id)
+        
+        if (!ebookInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Ebook.label', default: 'Ebook'), id])
+            redirect(action: "list")
             return
         }
 
-        if (ebookInstance.hasErrors()) {
-            respond ebookInstance.errors, view:'edit'
-            return
-        }
-
-        ebookInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Ebook.label', default: 'Ebook'), ebookInstance.id])
-                redirect ebookInstance
+        if (version != null) {
+            if (ebookInstance.version > version) {
+                ebookInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                    [message(code: 'Ebook.label', default: 'Ebook')] as Object[],
+                          "Another user has updated this Ebook while you were editing")
+                render(view: "edit", model: [ebookInstance: ebookInstance])
+                return
             }
-            '*'{ respond ebookInstance, [status: OK] }
         }
+                
+        def ebookFile = request.getFile('imagem')
+        
+        if(!ebookFile.empty)
+            ebookInstance.nomeImg = ebookFile.originalFilename
+        
+        if (!ebookInstance.save(flush: true)) {
+            render(view: "create", model: [ebookInstance: ebookInstance])
+            return
+        }
+        
+        def webRootDir = servletContext.getRealPath("/")
+        def ebookDir = new File(webRootDir, "/Ebook/${ebookInstance.id}")
+        ebookDir.mkdirs()
+        
+        if(!ebookFile.empty){
+            ebookFile.transferTo( new File( ebookDir, ebookFile.originalFilename))
+        }
+        
+        flash.message = message(code: 'default.created.message', args: [message(code: 'Ebook.label', default: 'Ebook'), ebookInstance.id])
+        redirect(action: "show", id: ebookInstance.id)
     }
 
     @Transactional

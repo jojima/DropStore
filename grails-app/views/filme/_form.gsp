@@ -68,9 +68,8 @@
 <div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'nomeImg', 'error')} required">
 	<label for="nomeImg">
 		<g:message code="filme.nomeImg.label" default="Nome Img" />
-		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nomeImg" required="" value="${filmeInstance?.nomeImg}"/>
+	<input type = "file" name="imagem"/>
 
 </div>
 

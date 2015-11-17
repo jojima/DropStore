@@ -90,7 +90,8 @@
 				<li class="fieldcontain">
 					<span id="nomeImg-label" class="property-label"><g:message code="ebook.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${ebookInstance}" field="nomeImg"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${ebookInstance}" field="nomeImg"/>
+                                                    <img src="${createLinkTo(dir:'Ebook/'+ ebookInstance.id, file:''+ebookInstance.nomeImg)}" alt="${ebookInstance.nomeImg}" title="${ebookInstance.nomeImg}" width="120px" height="120px"/></span>
 					
 				</li>
 				</g:if>
