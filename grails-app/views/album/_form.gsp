@@ -11,15 +11,15 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: albumInstance, field: 'listaMusicas', 'error')} ">
-	<label for="listaMusicas">
-		<g:message code="album.listaMusicas.label" default="Lista Musicas" />
+<div class="fieldcontain ${hasErrors(bean: albumInstance, field: 'musica', 'error')} ">
+	<label for="musica">
+		<g:message code="album.musica.label" default="Musica" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${albumInstance?.listaMusicas?}" var="l">
-    <li><g:link controller="musica" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></li>
+<g:each in="${albumInstance?.musica?}" var="m">
+    <li><g:link controller="musica" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
 <g:link controller="musica" action="create" params="['album.id': albumInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'musica.label', default: 'Musica')])}</g:link>

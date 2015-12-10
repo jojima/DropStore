@@ -32,6 +32,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${diretorInstance?.filme}">
+				<li class="fieldcontain">
+					<span id="filme-label" class="property-label"><g:message code="diretor.filme.label" default="Filme" /></span>
+					
+						<g:each in="${diretorInstance.filme}" var="f">
+						<span class="property-value" aria-labelledby="filme-label"><g:link controller="filme" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:diretorInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

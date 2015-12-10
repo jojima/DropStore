@@ -47,12 +47,30 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'diretor', 'error')} required">
+	<label for="diretor">
+		<g:message code="filme.diretor.label" default="Diretor" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="diretor" name="diretor.id" from="${br.dropbox.Diretor.list()}" optionKey="id" required="" value="${filmeInstance?.diretor?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'duracaoFilme', 'error')} required">
 	<label for="duracaoFilme">
 		<g:message code="filme.duracaoFilme.label" default="Duracao Filme" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="duracaoFilme" type="number" value="${filmeInstance.duracaoFilme}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'estudio', 'error')} required">
+	<label for="estudio">
+		<g:message code="filme.estudio.label" default="Estudio" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="estudio" name="estudio.id" from="${br.dropbox.Estudio.list()}" optionKey="id" required="" value="${filmeInstance?.estudio?.id}" class="many-to-one"/>
 
 </div>
 
@@ -68,8 +86,9 @@
 <div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'nomeImg', 'error')} required">
 	<label for="nomeImg">
 		<g:message code="filme.nomeImg.label" default="Nome Img" />
+		<span class="required-indicator">*</span>
 	</label>
-	<input type = "file" name="imagem"/>
+	<g:textField name="nomeImg" required="" value="${filmeInstance?.nomeImg}"/>
 
 </div>
 

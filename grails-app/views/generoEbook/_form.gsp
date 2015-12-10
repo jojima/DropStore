@@ -11,14 +11,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: generoEbookInstance, field: 'livros', 'error')} ">
-	<label for="livros">
-		<g:message code="generoEbook.livros.label" default="Livros" />
+<div class="fieldcontain ${hasErrors(bean: generoEbookInstance, field: 'livro', 'error')} ">
+	<label for="livro">
+		<g:message code="generoEbook.livro.label" default="Livro" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${generoEbookInstance?.livros?}" var="l">
+<g:each in="${generoEbookInstance?.livro?}" var="l">
     <li><g:link controller="ebook" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

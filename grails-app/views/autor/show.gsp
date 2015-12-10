@@ -32,6 +32,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${autorInstance?.livro}">
+				<li class="fieldcontain">
+					<span id="livro-label" class="property-label"><g:message code="autor.livro.label" default="Livro" /></span>
+					
+						<g:each in="${autorInstance.livro}" var="l">
+						<span class="property-value" aria-labelledby="livro-label"><g:link controller="ebook" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:autorInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

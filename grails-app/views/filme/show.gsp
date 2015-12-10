@@ -68,11 +68,29 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${filmeInstance?.diretor}">
+				<li class="fieldcontain">
+					<span id="diretor-label" class="property-label"><g:message code="filme.diretor.label" default="Diretor" /></span>
+					
+						<span class="property-value" aria-labelledby="diretor-label"><g:link controller="diretor" action="show" id="${filmeInstance?.diretor?.id}">${filmeInstance?.diretor?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${filmeInstance?.duracaoFilme}">
 				<li class="fieldcontain">
 					<span id="duracaoFilme-label" class="property-label"><g:message code="filme.duracaoFilme.label" default="Duracao Filme" /></span>
 					
 						<span class="property-value" aria-labelledby="duracaoFilme-label"><g:fieldValue bean="${filmeInstance}" field="duracaoFilme"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${filmeInstance?.estudio}">
+				<li class="fieldcontain">
+					<span id="estudio-label" class="property-label"><g:message code="filme.estudio.label" default="Estudio" /></span>
+					
+						<span class="property-value" aria-labelledby="estudio-label"><g:link controller="estudio" action="show" id="${filmeInstance?.estudio?.id}">${filmeInstance?.estudio?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -90,8 +108,7 @@
 				<li class="fieldcontain">
 					<span id="nomeImg-label" class="property-label"><g:message code="filme.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${filmeInstance}" field="nomeImg"/>
-                                                    <img src="${createLinkTo(dir:'Filme/'+ filmeInstance.id, file:''+filmeInstance.nomeImg)}" alt="${filmeInstance.nomeImg}" title="${filmeInstance.nomeImg}" width="120px" height="120px"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${filmeInstance}" field="nomeImg"/></span>
 					
 				</li>
 				</g:if>

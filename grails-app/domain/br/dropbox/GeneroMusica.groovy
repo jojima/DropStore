@@ -1,7 +1,7 @@
 package br.dropbox
 
 class GeneroMusica {
-    static hasMany = [genMusica:Musica]
+    static hasMany = [musica:Musica]
     static constraints = {
         nome(blank:false)
     }

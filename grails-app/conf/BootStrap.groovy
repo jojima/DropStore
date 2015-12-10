@@ -19,7 +19,7 @@ class BootStrap
             {
                 UsuarioPapel.create(user2, normalPapel, true)
             }
-            
+        /*    
         new GeneroFilme(nome: "Romance").addToFilmes(new Filme(titulo: "Titanic" , id: '1', descricao: "História de amor",
             valorUnitario: '10', nota: '10', ano: '2000', nomeImg: "titanic.jpg", duracao: '145')).save();
        
@@ -31,6 +31,7 @@ class BootStrap
         
         new GeneroFilme(nome: "Ação").addToFilmes(new Filme(titulo: "Duro de Matar" , id: '4', descricao: "História de ação",
             valorUnitario: '18', nota: '6', ano: '2012', nomeImg: "ddm.jpg", duracao: '157')).save();
+            */
     }
     
     def destroy = 

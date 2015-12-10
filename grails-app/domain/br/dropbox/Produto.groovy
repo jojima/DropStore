@@ -23,4 +23,8 @@ class Produto {
     float nota
     int ano
     String nomeImg
+    
+    String toString(){
+        return titulo
+    }
 }

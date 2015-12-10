@@ -32,12 +32,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${generoEbookInstance?.livros}">
+				<g:if test="${generoEbookInstance?.livro}">
 				<li class="fieldcontain">
-					<span id="livros-label" class="property-label"><g:message code="generoEbook.livros.label" default="Livros" /></span>
+					<span id="livro-label" class="property-label"><g:message code="generoEbook.livro.label" default="Livro" /></span>
 					
-						<g:each in="${generoEbookInstance.livros}" var="l">
-						<span class="property-value" aria-labelledby="livros-label"><g:link controller="ebook" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
+						<g:each in="${generoEbookInstance.livro}" var="l">
+						<span class="property-value" aria-labelledby="livro-label"><g:link controller="ebook" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

@@ -1,7 +1,7 @@
 package br.dropbox
 
 class Distribuidora {
-    static hasMany = [musicas:Musica]
+    static hasMany = [musica:Musica]
     static constraints = {
         nome(blank:false)
     }

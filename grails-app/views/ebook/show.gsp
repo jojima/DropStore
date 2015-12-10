@@ -77,11 +77,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${ebookInstance?.generos}">
+				<g:if test="${ebookInstance?.autor}">
 				<li class="fieldcontain">
-					<span id="generos-label" class="property-label"><g:message code="ebook.generos.label" default="Generos" /></span>
+					<span id="autor-label" class="property-label"><g:message code="ebook.autor.label" default="Autor" /></span>
 					
-						<span class="property-value" aria-labelledby="generos-label"><g:link controller="generoEbook" action="show" id="${ebookInstance?.generos?.id}">${ebookInstance?.generos?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="autor-label"><g:link controller="autor" action="show" id="${ebookInstance?.autor?.id}">${ebookInstance?.autor?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${ebookInstance?.editora}">
+				<li class="fieldcontain">
+					<span id="editora-label" class="property-label"><g:message code="ebook.editora.label" default="Editora" /></span>
+					
+						<span class="property-value" aria-labelledby="editora-label"><g:link controller="editora" action="show" id="${ebookInstance?.editora?.id}">${ebookInstance?.editora?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${ebookInstance?.genero}">
+				<li class="fieldcontain">
+					<span id="genero-label" class="property-label"><g:message code="ebook.genero.label" default="Genero" /></span>
+					
+						<span class="property-value" aria-labelledby="genero-label"><g:link controller="generoEbook" action="show" id="${ebookInstance?.genero?.id}">${ebookInstance?.genero?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -90,8 +108,7 @@
 				<li class="fieldcontain">
 					<span id="nomeImg-label" class="property-label"><g:message code="ebook.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${ebookInstance}" field="nomeImg"/>
-                                                    <img src="${createLinkTo(dir:'Ebook/'+ ebookInstance.id, file:''+ebookInstance.nomeImg)}" alt="${ebookInstance.nomeImg}" title="${ebookInstance.nomeImg}" width="120px" height="120px"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${ebookInstance}" field="nomeImg"/></span>
 					
 				</li>
 				</g:if>

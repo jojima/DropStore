@@ -1,7 +1,7 @@
 package br.dropbox
 
 class Editora {
-    static hasMany = Ebook
+    static hasMany = [livro:Ebook]
     static constraints = {
         nome(blank:false)
     }

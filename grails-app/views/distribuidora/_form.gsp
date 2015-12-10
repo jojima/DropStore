@@ -11,14 +11,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: distribuidoraInstance, field: 'musicas', 'error')} ">
-	<label for="musicas">
-		<g:message code="distribuidora.musicas.label" default="Musicas" />
+<div class="fieldcontain ${hasErrors(bean: distribuidoraInstance, field: 'musica', 'error')} ">
+	<label for="musica">
+		<g:message code="distribuidora.musica.label" default="Musica" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${distribuidoraInstance?.musicas?}" var="m">
+<g:each in="${distribuidoraInstance?.musica?}" var="m">
     <li><g:link controller="musica" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

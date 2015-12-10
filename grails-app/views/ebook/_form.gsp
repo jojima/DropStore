@@ -56,20 +56,39 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'generos', 'error')} required">
-	<label for="generos">
-		<g:message code="ebook.generos.label" default="Generos" />
+<div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'autor', 'error')} required">
+	<label for="autor">
+		<g:message code="ebook.autor.label" default="Autor" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="generos" name="generos.id" from="${br.dropbox.GeneroEbook.list()}" optionKey="id" required="" value="${ebookInstance?.generos?.id}" class="many-to-one"/>
+	<g:select id="autor" name="autor.id" from="${br.dropbox.Autor.list()}" optionKey="id" required="" value="${ebookInstance?.autor?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'editora', 'error')} required">
+	<label for="editora">
+		<g:message code="ebook.editora.label" default="Editora" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="editora" name="editora.id" from="${br.dropbox.Editora.list()}" optionKey="id" required="" value="${ebookInstance?.editora?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'genero', 'error')} required">
+	<label for="genero">
+		<g:message code="ebook.genero.label" default="Genero" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="genero" name="genero.id" from="${br.dropbox.GeneroEbook.list()}" optionKey="id" required="" value="${ebookInstance?.genero?.id}" class="many-to-one"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'nomeImg', 'error')} required">
 	<label for="nomeImg">
 		<g:message code="ebook.nomeImg.label" default="Nome Img" />
+		<span class="required-indicator">*</span>
 	</label>
-	<input type = "file" name="imagem"/>
+	<g:textField name="nomeImg" required="" value="${ebookInstance?.nomeImg}"/>
 
 </div>
 

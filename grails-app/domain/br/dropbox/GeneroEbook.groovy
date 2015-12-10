@@ -1,7 +1,7 @@
 package br.dropbox
 
 class GeneroEbook {
-    static hasMany = [livros:Ebook]
+    static hasMany = [livro:Ebook]
     static constraints = {
         nome(blank:false)
     }

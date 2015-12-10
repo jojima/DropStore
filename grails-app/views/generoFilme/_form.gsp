@@ -11,14 +11,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: generoFilmeInstance, field: 'filmes', 'error')} ">
-	<label for="filmes">
-		<g:message code="generoFilme.filmes.label" default="Filmes" />
+<div class="fieldcontain ${hasErrors(bean: generoFilmeInstance, field: 'filme', 'error')} ">
+	<label for="filme">
+		<g:message code="generoFilme.filme.label" default="Filme" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${generoFilmeInstance?.filmes?}" var="f">
+<g:each in="${generoFilmeInstance?.filme?}" var="f">
     <li><g:link controller="filme" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

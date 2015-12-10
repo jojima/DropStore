@@ -32,6 +32,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${artistaInstance?.musica}">
+				<li class="fieldcontain">
+					<span id="musica-label" class="property-label"><g:message code="artista.musica.label" default="Musica" /></span>
+					
+						<g:each in="${artistaInstance.musica}" var="m">
+						<span class="property-value" aria-labelledby="musica-label"><g:link controller="musica" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:artistaInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -1,7 +1,7 @@
 package br.dropbox
 
 class Album {
-    static hasMany = [listaMusicas:Musica]
+    static hasMany = [musica:Musica]
     static constraints = {
         nome(blank:false)
     }

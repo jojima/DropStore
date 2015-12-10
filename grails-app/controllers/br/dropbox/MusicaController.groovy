@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class MusicaController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,85 +24,53 @@ class MusicaController {
     }
 
     @Transactional
-    def save() {
-        def musicaInstance = new Musica(params)
-        
-        def musicaFile = request.getFile('imagem')
-        
-        if(!musicaFile.empty)
-            musicaInstance.nomeImg = musicaFile.originalFilename
-        
-        if (!musicaInstance.save(flush: true)) {
-            render(view: "create", model: [musicaInstance: musicaInstance])
+    def save(Musica musicaInstance) {
+        if (musicaInstance == null) {
+            notFound()
             return
         }
-        
-        def webRootDir = servletContext.getRealPath("/")
-        def musicaDir = new File(webRootDir, "/Musica/${musicaInstance.id}")
-        musicaDir.mkdirs()
-        
-        if(!musicaFile.empty){
-            musicaFile.transferTo( new File( musicaDir, musicaFile.originalFilename))
+
+        if (musicaInstance.hasErrors()) {
+            respond musicaInstance.errors, view:'create'
+            return
         }
-        
-        flash.message = message(code: 'default.created.message', args: [message(code: 'Musica.label', default: 'Musica'), musicaInstance.id])
-        redirect(action: "show", id: musicaInstance.id)
+
+        musicaInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'musica.label', default: 'Musica'), musicaInstance.id])
+                redirect musicaInstance
+            }
+            '*' { respond musicaInstance, [status: CREATED] }
+        }
     }
 
-    def edit(long id) {
-        
-        def musicaInstance = Musica.get(id)
-        
-        if (!musicaInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Musica.label', default: 'Musica'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [musicaInstance: musicaInstance]
+    def edit(Musica musicaInstance) {
+        respond musicaInstance
     }
 
     @Transactional
-    def update(long id, long version) {
-        
-        def musicaInstance = Musica.get(id)
-        
-        if (!musicaInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'Musica.label', default: 'Musica'), id])
-            redirect(action: "list")
+    def update(Musica musicaInstance) {
+        if (musicaInstance == null) {
+            notFound()
             return
         }
 
-        if (version != null) {
-            if (musicaInstance.version > version) {
-                musicaInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                    [message(code: 'Musica.label', default: 'Musica')] as Object[],
-                          "Another user has updated this Musica while you were editing")
-                render(view: "edit", model: [musicaInstance: musicaInstance])
-                return
-            }
-        }
-                
-        def musicaFile = request.getFile('imagem')
-        
-        if(!musicaFile.empty)
-            musicaInstance.nomeImg = musicaFile.originalFilename
-        
-        if (!musicaInstance.save(flush: true)) {
-            render(view: "create", model: [musicaInstance: musicaInstance])
+        if (musicaInstance.hasErrors()) {
+            respond musicaInstance.errors, view:'edit'
             return
         }
-        
-        def webRootDir = servletContext.getRealPath("/")
-        def musicaDir = new File(webRootDir, "/Musica/${musicaInstance.id}")
-        filmeDir.mkdirs()
-        
-        if(!musicaFile.empty){
-            musicaFile.transferTo( new File( musicaDir, musicaFile.originalFilename))
+
+        musicaInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Musica.label', default: 'Musica'), musicaInstance.id])
+                redirect musicaInstance
+            }
+            '*'{ respond musicaInstance, [status: OK] }
         }
-        
-        flash.message = message(code: 'default.created.message', args: [message(code: 'Musica.label', default: 'Musica'), musicaInstance.id])
-        redirect(action: "show", id: musicaInstance.id)
     }
 
     @Transactional

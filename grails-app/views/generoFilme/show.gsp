@@ -32,12 +32,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${generoFilmeInstance?.filmes}">
+				<g:if test="${generoFilmeInstance?.filme}">
 				<li class="fieldcontain">
-					<span id="filmes-label" class="property-label"><g:message code="generoFilme.filmes.label" default="Filmes" /></span>
+					<span id="filme-label" class="property-label"><g:message code="generoFilme.filme.label" default="Filme" /></span>
 					
-						<g:each in="${generoFilmeInstance.filmes}" var="f">
-						<span class="property-value" aria-labelledby="filmes-label"><g:link controller="filme" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
+						<g:each in="${generoFilmeInstance.filme}" var="f">
+						<span class="property-value" aria-labelledby="filme-label"><g:link controller="filme" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

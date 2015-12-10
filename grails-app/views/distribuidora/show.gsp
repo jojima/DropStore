@@ -32,12 +32,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${distribuidoraInstance?.musicas}">
+				<g:if test="${distribuidoraInstance?.musica}">
 				<li class="fieldcontain">
-					<span id="musicas-label" class="property-label"><g:message code="distribuidora.musicas.label" default="Musicas" /></span>
+					<span id="musica-label" class="property-label"><g:message code="distribuidora.musica.label" default="Musica" /></span>
 					
-						<g:each in="${distribuidoraInstance.musicas}" var="m">
-						<span class="property-value" aria-labelledby="musicas-label"><g:link controller="musica" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						<g:each in="${distribuidoraInstance.musica}" var="m">
+						<span class="property-value" aria-labelledby="musica-label"><g:link controller="musica" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

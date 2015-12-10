@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="ano" title="${message(code: 'musica.ano.label', default: 'Ano')}" />
 					
-						<th><g:message code="musica.albuns.label" default="Albuns" /></th>
+						<th><g:message code="musica.album.label" default="Album" /></th>
 					
 					</tr>
 				</thead>
@@ -52,11 +52,7 @@
 					
 						<td>${fieldValue(bean: musicaInstance, field: "ano")}</td>
 					
-						<td>${fieldValue(bean: musicaInstance, field: "albuns")}</td>
-                                                
-                                                <td> 
-                                                    <img src="${createLinkTo(dir:'Musica/'+ musicaInstance.id, file:''+musicaInstance.nomeImg)}" width="60px" height="60px" />
-                                                </td>
+						<td>${fieldValue(bean: musicaInstance, field: "album")}</td>
 					
 					</tr>
 				</g:each>

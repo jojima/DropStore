@@ -32,12 +32,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${generoMusicaInstance?.genMusica}">
+				<g:if test="${generoMusicaInstance?.musica}">
 				<li class="fieldcontain">
-					<span id="genMusica-label" class="property-label"><g:message code="generoMusica.genMusica.label" default="Gen Musica" /></span>
+					<span id="musica-label" class="property-label"><g:message code="generoMusica.musica.label" default="Musica" /></span>
 					
-						<g:each in="${generoMusicaInstance.genMusica}" var="g">
-						<span class="property-value" aria-labelledby="genMusica-label"><g:link controller="musica" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></span>
+						<g:each in="${generoMusicaInstance.musica}" var="m">
+						<span class="property-value" aria-labelledby="musica-label"><g:link controller="musica" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

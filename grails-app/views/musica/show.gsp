@@ -68,20 +68,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${musicaInstance?.albuns}">
+				<g:if test="${musicaInstance?.album}">
 				<li class="fieldcontain">
-					<span id="albuns-label" class="property-label"><g:message code="musica.albuns.label" default="Albuns" /></span>
+					<span id="album-label" class="property-label"><g:message code="musica.album.label" default="Album" /></span>
 					
-						<span class="property-value" aria-labelledby="albuns-label"><g:link controller="album" action="show" id="${musicaInstance?.albuns?.id}">${musicaInstance?.albuns?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="album-label"><g:link controller="album" action="show" id="${musicaInstance?.album?.id}">${musicaInstance?.album?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${musicaInstance?.distribuidoras}">
+				<g:if test="${musicaInstance?.artista}">
 				<li class="fieldcontain">
-					<span id="distribuidoras-label" class="property-label"><g:message code="musica.distribuidoras.label" default="Distribuidoras" /></span>
+					<span id="artista-label" class="property-label"><g:message code="musica.artista.label" default="Artista" /></span>
 					
-						<span class="property-value" aria-labelledby="distribuidoras-label"><g:link controller="distribuidora" action="show" id="${musicaInstance?.distribuidoras?.id}">${musicaInstance?.distribuidoras?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="artista-label"><g:link controller="artista" action="show" id="${musicaInstance?.artista?.id}">${musicaInstance?.artista?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicaInstance?.distribuidora}">
+				<li class="fieldcontain">
+					<span id="distribuidora-label" class="property-label"><g:message code="musica.distribuidora.label" default="Distribuidora" /></span>
+					
+						<span class="property-value" aria-labelledby="distribuidora-label"><g:link controller="distribuidora" action="show" id="${musicaInstance?.distribuidora?.id}">${musicaInstance?.distribuidora?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -95,11 +104,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${musicaInstance?.generom}">
+				<g:if test="${musicaInstance?.genero}">
 				<li class="fieldcontain">
-					<span id="generom-label" class="property-label"><g:message code="musica.generom.label" default="Generom" /></span>
+					<span id="genero-label" class="property-label"><g:message code="musica.genero.label" default="Genero" /></span>
 					
-						<span class="property-value" aria-labelledby="generom-label"><g:link controller="generoMusica" action="show" id="${musicaInstance?.generom?.id}">${musicaInstance?.generom?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="genero-label"><g:link controller="generoMusica" action="show" id="${musicaInstance?.genero?.id}">${musicaInstance?.genero?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -108,8 +117,7 @@
 				<li class="fieldcontain">
 					<span id="nomeImg-label" class="property-label"><g:message code="musica.nomeImg.label" default="Nome Img" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${musicaInstance}" field="nomeImg"/>
-                                                    <img src="${createLinkTo(dir:'Musica/'+ musicaInstance.id, file:''+musicaInstance.nomeImg)}" alt="${musicaInstance.nomeImg}" title="${musicaInstance.nomeImg}" width="120px" height="120px"/></span>
+						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${musicaInstance}" field="nomeImg"/></span>
 					
 				</li>
 				</g:if>

@@ -47,21 +47,30 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'albuns', 'error')} required">
-	<label for="albuns">
-		<g:message code="musica.albuns.label" default="Albuns" />
+<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'album', 'error')} required">
+	<label for="album">
+		<g:message code="musica.album.label" default="Album" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="albuns" name="albuns.id" from="${br.dropbox.Album.list()}" optionKey="id" required="" value="${musicaInstance?.albuns?.id}" class="many-to-one"/>
+	<g:select id="album" name="album.id" from="${br.dropbox.Album.list()}" optionKey="id" required="" value="${musicaInstance?.album?.id}" class="many-to-one"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'distribuidoras', 'error')} required">
-	<label for="distribuidoras">
-		<g:message code="musica.distribuidoras.label" default="Distribuidoras" />
+<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'artista', 'error')} required">
+	<label for="artista">
+		<g:message code="musica.artista.label" default="Artista" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="distribuidoras" name="distribuidoras.id" from="${br.dropbox.Distribuidora.list()}" optionKey="id" required="" value="${musicaInstance?.distribuidoras?.id}" class="many-to-one"/>
+	<g:select id="artista" name="artista.id" from="${br.dropbox.Artista.list()}" optionKey="id" required="" value="${musicaInstance?.artista?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'distribuidora', 'error')} required">
+	<label for="distribuidora">
+		<g:message code="musica.distribuidora.label" default="Distribuidora" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="distribuidora" name="distribuidora.id" from="${br.dropbox.Distribuidora.list()}" optionKey="id" required="" value="${musicaInstance?.distribuidora?.id}" class="many-to-one"/>
 
 </div>
 
@@ -74,20 +83,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'generom', 'error')} required">
-	<label for="generom">
-		<g:message code="musica.generom.label" default="Generom" />
+<div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'genero', 'error')} required">
+	<label for="genero">
+		<g:message code="musica.genero.label" default="Genero" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="generom" name="generom.id" from="${br.dropbox.GeneroMusica.list()}" optionKey="id" required="" value="${musicaInstance?.generom?.id}" class="many-to-one"/>
+	<g:select id="genero" name="genero.id" from="${br.dropbox.GeneroMusica.list()}" optionKey="id" required="" value="${musicaInstance?.genero?.id}" class="many-to-one"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'nomeImg', 'error')} required">
 	<label for="nomeImg">
 		<g:message code="musica.nomeImg.label" default="Nome Img" />
+		<span class="required-indicator">*</span>
 	</label>
-	<input type = "file" name="imagem"/>
+	<g:textField name="nomeImg" required="" value="${musicaInstance?.nomeImg}"/>
 
 </div>
 

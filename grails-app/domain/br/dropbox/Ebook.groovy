@@ -1,7 +1,7 @@
 package br.dropbox
 
 class Ebook extends Produto {
-    static belongsTo = [generos:GeneroEbook]
+    static belongsTo = [genero:GeneroEbook, editora: Editora, autor: Autor]
     static constraints = {
         numPaginas(blank: false)
     }

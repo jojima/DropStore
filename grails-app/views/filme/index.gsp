@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="ano" title="${message(code: 'filme.ano.label', default: 'Ano')}" />
 					
-						<g:sortableColumn property="duracaoFilme" title="${message(code: 'filme.duracaoFilme.label', default: 'Duracao Filme')}" />
+						<th><g:message code="filme.diretor.label" default="Diretor" /></th>
 					
 					</tr>
 				</thead>
@@ -52,11 +52,7 @@
 					
 						<td>${fieldValue(bean: filmeInstance, field: "ano")}</td>
 					
-						<td>${fieldValue(bean: filmeInstance, field: "duracaoFilme")}</td>
-                                                
-                                                <td> 
-                                                    <img src="${createLinkTo(dir:'Filme/'+ filmeInstance.id, file:''+filmeInstance.nomeImg)}" width="60px" height="60px" />
-                                                </td>
+						<td>${fieldValue(bean: filmeInstance, field: "diretor")}</td>
 					
 					</tr>
 				</g:each>

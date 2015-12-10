@@ -27,15 +27,13 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form method="post" enctype="multipart/form-data">
-				<g:hiddenField name="id" value="${musicaInstance?.id}" />
+			<g:form url="[resource:musicaInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${musicaInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>

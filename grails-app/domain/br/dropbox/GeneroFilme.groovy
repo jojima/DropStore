@@ -1,7 +1,7 @@
 package br.dropbox
 
 class GeneroFilme {
-    static hasMany = [filmes: Filme]
+    static hasMany = [filme: Filme]
     static constraints = {
         nome(blank:false)
     }
