@@ -125,7 +125,9 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.dropbox.Usu
 grails.plugin.springsecurity.authority.className = 'br.dropbox.Papel'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':              		['permitAll'],
+        '/**/show/*':                   ['permitAll'],
         '/usuario/create':              ['permitAll'],
+        '/usuario/save':                ['permitAll'],
 	'/index':           		['permitAll'],
 	'/index.gsp':                   ['permitAll'],
 	'/assets/**':                   ['permitAll'],
@@ -154,7 +156,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/generoFilme/*':       	['permitAll'],
 	'/generoMusica/*':              ['permitAll'],
         '/generoEbook/*':               ['permitAll'],
-        '/usuario/*':                   ['ROLE_ADMIN'],
+        '/usuario/*':                   ['permitAll'],
+        '/usuario/index':               ['ROLE_ADMIN'],
         '/usuarioPapel/*':              ['ROLE_ADMIN'],
         '/**/*.jpg':                    ['permitAll'],
         '/**/*.png':                    ['permitAll']
