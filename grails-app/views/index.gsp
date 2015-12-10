@@ -14,13 +14,14 @@
 
         <div id="header-wrapper" class="wrapper">
             <div id="header">
-
+                
+                <input type="submit" value="Iniciar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/login/auth' "> <input type="submit" value="Encerrar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/logout' ">
  
                 <div id="logo">
 
 
                     <div id="grailsLogo" role="banner"><a href="##"><asset:image src="dropbox01.png" alt="Grails"/></a></div>
-
+                        
                 </div>
 
 

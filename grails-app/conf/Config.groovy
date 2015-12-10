@@ -118,17 +118,42 @@ log4j.main = {
 
 
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.securityConfigType = "Annotation"
+grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'br.dropbox.Usuario'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.dropbox.UsuarioPapel'
 grails.plugin.springsecurity.authority.className = 'br.dropbox.Papel'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/**':                ['permitAll'],
-	'/index':           ['permitAll'],
-	'/index.gsp':       ['permitAll'],
-	'/assets/**':       ['permitAll'],
-	'/**/js/**':        ['permitAll'],
-	'/**/css/**':       ['permitAll'],
-	'/**/images/**':    ['permitAll'],
-	'/**/favicon.ico':  ['permitAll']
+	'/':              		['permitAll'],
+	'/index':           		['permitAll'],
+	'/index.gsp':                   ['permitAll'],
+	'/assets/**':                   ['permitAll'],
+	'/**/js/**':        		['permitAll'],
+	'/**/css/**':       		['permitAll'],
+	'/**/images/**':                ['permitAll'],
+	'/**/favicon.ico':              ['permitAll'],
+        '/dbconsole/**':                ['permitAll'],
+        '/carrinhoCompras/*':           ['ROLE_ADMIN', 'ROLE_USER'],
+        '/critica/create':              ['ROLE_USER', 'ROLE_ADMIN'],
+        '/**/create':    		['ROLE_ADMIN'],      
+        '/pedido/*':       		['ROLE_ADMIN', 'ROLE_USER'],  
+        '/item/*':       		['ROLE_ADMIN'],
+	'/ebook/*':                     ['permitAll'],
+    	'/diretor/*':                   ['permitAll'],
+	'/filme/*':         		['permitAll'],
+	'/album/*':       		['permitAll'],
+	'/artista/*':       		['permitAll'],
+	'/arquivo/*':           	['ROLE_ADMIN', 'ROLE_USER'],
+	'/autor/*':       		['permitAll'],
+	'/editora/*':                   ['permitAll'],
+        '/critica/*':       		['permitAll'],
+        '/distribuidora/*':       	['permitAll'],
+        '/estudio/*':                   ['permitAll'],
+	'/musica/*':                    ['permitAll'],
+	'/generoFilme/*':       	['permitAll'],
+	'/generoMusica/*':              ['permitAll'],
+        '/generoEbook/*':               ['permitAll'],
+        '/usuario/*':                   ['ROLE_ADMIN'],
+        '/usuario':                   ['ROLE_ADMIN']
 ]
 

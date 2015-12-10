@@ -8,6 +8,7 @@ class Usuario implements Serializable {
 
 	String username
 	String password
+        String nome
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
