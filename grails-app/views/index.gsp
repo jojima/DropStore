@@ -23,7 +23,7 @@
                     <div id="grailsLogo" role="banner"><a href="##"><asset:image src="dropbox01.png" alt="Grails"/></a></div>
                         
                 </div>
-
+                
 
                 <nav id="nav">
                     <ul>
