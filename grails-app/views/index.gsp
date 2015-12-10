@@ -15,7 +15,7 @@
         <div id="header-wrapper" class="wrapper">
             <div id="header">
                 
-                <input type="submit" value="Iniciar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/login/auth' "> <input type="submit" value="Encerrar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/logout' ">
+                <input type="submit" value="Iniciar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/login/auth' "> <input type="submit" value="Encerrar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/logout' ">                             <input type="submit" value="Registrar" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/usuario/create' ">
  
                 <div id="logo">
 

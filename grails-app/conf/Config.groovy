@@ -125,6 +125,7 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'br.dropbox.Usu
 grails.plugin.springsecurity.authority.className = 'br.dropbox.Papel'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':              		['permitAll'],
+        '/usuario/create':              ['permitAll'],
 	'/index':           		['permitAll'],
 	'/index.gsp':                   ['permitAll'],
 	'/assets/**':                   ['permitAll'],
@@ -132,18 +133,18 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':       		['permitAll'],
 	'/**/images/**':                ['permitAll'],
 	'/**/favicon.ico':              ['permitAll'],
-        '/dbconsole/**':                ['permitAll'],
-        '/carrinhoCompras/*':           ['ROLE_ADMIN', 'ROLE_USER'],
-        '/critica/create':              ['ROLE_USER', 'ROLE_ADMIN'],
+        '/dbconsole/**':                ['IS_AUTHENTICATED_REMEMBERED'],
+        '/carrinhoCompras/*':           ['IS_AUTHENTICATED_REMEMBERED'],
+        '/critica/create':              ['IS_AUTHENTICATED_REMEMBERED'],
         '/**/create':    		['ROLE_ADMIN'],      
-        '/pedido/*':       		['ROLE_ADMIN', 'ROLE_USER'],  
+        '/pedido/*':       		['IS_AUTHENTICATED_REMEMBERED'],  
         '/item/*':       		['ROLE_ADMIN'],
 	'/ebook/*':                     ['permitAll'],
     	'/diretor/*':                   ['permitAll'],
 	'/filme/*':         		['permitAll'],
 	'/album/*':       		['permitAll'],
 	'/artista/*':       		['permitAll'],
-	'/arquivo/*':           	['ROLE_ADMIN', 'ROLE_USER'],
+	'/arquivo/*':           	['IS_AUTHENTICATED_REMEMBERED'],
 	'/autor/*':       		['permitAll'],
 	'/editora/*':                   ['permitAll'],
         '/critica/*':       		['permitAll'],
@@ -154,6 +155,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/generoMusica/*':              ['permitAll'],
         '/generoEbook/*':               ['permitAll'],
         '/usuario/*':                   ['ROLE_ADMIN'],
-        '/usuario':                   ['ROLE_ADMIN']
+        '/usuarioPapel/*':              ['ROLE_ADMIN'],
+        '/**/*.jpg':                    ['permitAll'],
+        '/**/*.png':                    ['permitAll']
 ]
 
