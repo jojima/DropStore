@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <asset:stylesheet src="main2.css"/>
-
-
-</head>
+        <meta name="layout" content="main"/>
+        <asset:stylesheet src="main2.css"/>
+        <title>Bem vindo a DropStore</title>
+        
+    </head>
 
 <body class="homepage">
 
@@ -18,11 +19,12 @@
                 <input type="submit" value="Iniciar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/login/auth' "> <input type="submit" value="Encerrar Sessão" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/logout' ">                             <input type="submit" value="Registrar" onclick="location. href= 'http://localhost:8080/DropboxImplementacao/usuario/create' ">
  
                 <div id="logo">
+                
 
-
-                    <div id="grailsLogo" role="banner"><a href="##"><asset:image src="dropbox01.png" alt="Grails"/></a></div>
+<!--                    <div id="grailsLogo" role="banner"><a href="##"><asset:image src="dropbox01.png" alt="Grails"/></a></div>-->
                         
                 </div>
+                <h1>Produtos da DropStore</h1>
                 
 
                 <nav id="nav">
