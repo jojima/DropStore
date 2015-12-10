@@ -6,4 +6,8 @@ class GeneroMusica {
         nome(blank:false)
     }
     String nome
+    
+    String toString(){
+        return nome
+    }
 }

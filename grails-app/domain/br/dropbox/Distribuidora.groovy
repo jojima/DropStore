@@ -6,4 +6,8 @@ class Distribuidora {
         nome(blank:false)
     }
     String nome
+    
+    String toString(){
+        return nome
+    }
 }

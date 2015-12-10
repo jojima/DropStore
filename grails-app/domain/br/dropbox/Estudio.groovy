@@ -6,4 +6,8 @@ class Estudio {
         nome(blank:false)
     }
     String nome
+    
+    String toString(){
+        return nome
+    }
 }
