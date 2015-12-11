@@ -2,7 +2,6 @@ package br.dropbox
 
 class Produto {
 
-    static hasMany = Critica
     static mapping =
     {
          tablePerHierarchy false

@@ -65,6 +65,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'criticas', 'error')} ">
+	<label for="criticas">
+		<g:message code="ebook.criticas.label" default="Criticas" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${ebookInstance?.criticas?}" var="c">
+    <li><g:link controller="critica" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="critica" action="create" params="['ebook.id': ebookInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'critica.label', default: 'Critica')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'editora', 'error')} required">
 	<label for="editora">
 		<g:message code="ebook.editora.label" default="Editora" />

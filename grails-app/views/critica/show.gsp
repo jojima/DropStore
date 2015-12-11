@@ -23,15 +23,6 @@
 			</g:if>
 			<ol class="property-list critica">
 			
-				<g:if test="${criticaInstance?.autor}">
-				<li class="fieldcontain">
-					<span id="autor-label" class="property-label"><g:message code="critica.autor.label" default="Autor" /></span>
-					
-						<span class="property-value" aria-labelledby="autor-label"><g:link controller="usuario" action="show" id="${criticaInstance?.autor?.id}">${criticaInstance?.autor?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${criticaInstance?.classificacao}">
 				<li class="fieldcontain">
 					<span id="classificacao-label" class="property-label"><g:message code="critica.classificacao.label" default="Classificacao" /></span>
@@ -46,6 +37,24 @@
 					<span id="comentario-label" class="property-label"><g:message code="critica.comentario.label" default="Comentario" /></span>
 					
 						<span class="property-value" aria-labelledby="comentario-label"><g:fieldValue bean="${criticaInstance}" field="comentario"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${criticaInstance?.autor}">
+				<li class="fieldcontain">
+					<span id="autor-label" class="property-label"><g:message code="critica.autor.label" default="Autor" /></span>
+					
+						<span class="property-value" aria-labelledby="autor-label"><g:link controller="usuario" action="show" id="${criticaInstance?.autor?.id}">${criticaInstance?.autor?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${criticaInstance?.produto}">
+				<li class="fieldcontain">
+					<span id="produto-label" class="property-label"><g:message code="critica.produto.label" default="Produto" /></span>
+					
+						<span class="property-value" aria-labelledby="produto-label"><g:link controller="produto" action="show" id="${criticaInstance?.produto?.id}">${criticaInstance?.produto?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

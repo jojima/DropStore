@@ -86,6 +86,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicaInstance?.criticas}">
+				<li class="fieldcontain">
+					<span id="criticas-label" class="property-label"><g:message code="musica.criticas.label" default="Criticas" /></span>
+					
+						<g:each in="${musicaInstance.criticas}" var="c">
+						<span class="property-value" aria-labelledby="criticas-label"><g:link controller="critica" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicaInstance?.distribuidora}">
 				<li class="fieldcontain">
 					<span id="distribuidora-label" class="property-label"><g:message code="musica.distribuidora.label" default="Distribuidora" /></span>

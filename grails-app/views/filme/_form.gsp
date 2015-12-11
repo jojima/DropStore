@@ -47,6 +47,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'criticas', 'error')} ">
+	<label for="criticas">
+		<g:message code="filme.criticas.label" default="Criticas" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${filmeInstance?.criticas?}" var="c">
+    <li><g:link controller="critica" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="critica" action="create" params="['filme.id': filmeInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'critica.label', default: 'Critica')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: filmeInstance, field: 'diretor', 'error')} required">
 	<label for="diretor">
 		<g:message code="filme.diretor.label" default="Diretor" />

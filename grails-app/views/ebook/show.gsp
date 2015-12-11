@@ -86,6 +86,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${ebookInstance?.criticas}">
+				<li class="fieldcontain">
+					<span id="criticas-label" class="property-label"><g:message code="ebook.criticas.label" default="Criticas" /></span>
+					
+						<g:each in="${ebookInstance.criticas}" var="c">
+						<span class="property-value" aria-labelledby="criticas-label"><g:link controller="critica" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${ebookInstance?.editora}">
 				<li class="fieldcontain">
 					<span id="editora-label" class="property-label"><g:message code="ebook.editora.label" default="Editora" /></span>

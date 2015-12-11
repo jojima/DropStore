@@ -24,11 +24,13 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="critica.autor.label" default="Autor" /></th>
-					
 						<g:sortableColumn property="classificacao" title="${message(code: 'critica.classificacao.label', default: 'Classificacao')}" />
 					
 						<g:sortableColumn property="comentario" title="${message(code: 'critica.comentario.label', default: 'Comentario')}" />
+					
+						<th><g:message code="critica.autor.label" default="Autor" /></th>
+					
+						<th><g:message code="critica.produto.label" default="Produto" /></th>
 					
 					</tr>
 				</thead>
@@ -36,11 +38,13 @@
 				<g:each in="${criticaInstanceList}" status="i" var="criticaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${criticaInstance.id}">${fieldValue(bean: criticaInstance, field: "autor")}</g:link></td>
-					
-						<td>${fieldValue(bean: criticaInstance, field: "classificacao")}</td>
+						<td><g:link action="show" id="${criticaInstance.id}">${fieldValue(bean: criticaInstance, field: "classificacao")}</g:link></td>
 					
 						<td>${fieldValue(bean: criticaInstance, field: "comentario")}</td>
+					
+						<td>${fieldValue(bean: criticaInstance, field: "autor")}</td>
+					
+						<td>${fieldValue(bean: criticaInstance, field: "produto")}</td>
 					
 					</tr>
 				</g:each>

@@ -1,6 +1,5 @@
 
 <%@ page import="br.dropbox.Filme" %>
-<%@ page import="grails.plugin.springsecurity.annotation.Secured" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -65,6 +64,17 @@
 					<span id="ano-label" class="property-label"><g:message code="filme.ano.label" default="Ano" /></span>
 					
 						<span class="property-value" aria-labelledby="ano-label"><g:fieldValue bean="${filmeInstance}" field="ano"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${filmeInstance?.criticas}">
+				<li class="fieldcontain">
+					<span id="criticas-label" class="property-label"><g:message code="filme.criticas.label" default="Criticas" /></span>
+					
+						<g:each in="${filmeInstance.criticas}" var="c">
+						<span class="property-value" aria-labelledby="criticas-label"><g:link controller="critica" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
