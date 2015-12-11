@@ -54,7 +54,9 @@
                         <li><a href="http://localhost:8080/DropboxImplementacao/item/index"><h1 style="color:black">Item</a></li>
                         <li><a href="http://localhost:8080/DropboxImplementacao/pedido/index"><h1 style="color:black">Pedido</a></li>
                         <li><a href="http://localhost:8080/DropboxImplementacao/musica/index"><h1 style="color:black">Musica</a></li>
-                               
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
+                        <li><a href="http://localhost:8080/DropboxImplementacao/usuario/index"><h1 style="color:black">Usuarios</a></li>
+                        </sec:ifAnyGranted>       
                     
                     </ul>
                 </nav>
