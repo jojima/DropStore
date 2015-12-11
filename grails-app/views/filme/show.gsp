@@ -1,5 +1,6 @@
 
 <%@ page import="br.dropbox.Filme" %>
+<%@ page import="grails.plugin.springsecurity.annotation.Secured" %>
 <!DOCTYPE html>
 <html>
 	<head>
