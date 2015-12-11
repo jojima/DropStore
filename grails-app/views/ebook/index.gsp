@@ -53,8 +53,12 @@
 						<td>${fieldValue(bean: ebookInstance, field: "ano")}</td>
 					
 						<td>${fieldValue(bean: ebookInstance, field: "numPaginas")}</td>
+                                                
+                                                <td> 
+                                                    <img src="${createLinkTo(dir:'Ebook/'+ ebookInstance.id, file:''+ebookInstance.nomeImg)}" width="60px" height="60px" />
+                                                </td>
 					
-					</tr>
+                                        </tr>
 				</g:each>
 				</tbody>
 			</table>

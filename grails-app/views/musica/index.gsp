@@ -53,6 +53,10 @@
 						<td>${fieldValue(bean: musicaInstance, field: "ano")}</td>
 					
 						<td>${fieldValue(bean: musicaInstance, field: "album")}</td>
+                                                
+                                                <td> 
+                                                    <img src="${createLinkTo(dir:'Musica/'+ musicaInstance.id, file:''+musicaInstance.nomeImg)}" width="60px" height="60px" />
+                                                </td>
 					
 					</tr>
 				</g:each>

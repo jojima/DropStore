@@ -160,6 +160,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/usuario/index':               ['ROLE_ADMIN'],
         '/usuarioPapel/*':              ['ROLE_ADMIN'],
         '/**/*.jpg':                    ['permitAll'],
-        '/**/*.png':                    ['permitAll']
+        '/**/*.png':                    ['permitAll'],
+        '/produto/*':           	['IS_AUTHENTICATED_REMEMBERED']
 ]
 

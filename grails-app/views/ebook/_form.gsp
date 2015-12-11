@@ -104,9 +104,8 @@
 <div class="fieldcontain ${hasErrors(bean: ebookInstance, field: 'nomeImg', 'error')} required">
 	<label for="nomeImg">
 		<g:message code="ebook.nomeImg.label" default="Nome Img" />
-		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nomeImg" required="" value="${ebookInstance?.nomeImg}"/>
+	<input type = "file" name="imagem"/>
 
 </div>
 

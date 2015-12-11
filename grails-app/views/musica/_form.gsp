@@ -113,9 +113,8 @@
 <div class="fieldcontain ${hasErrors(bean: musicaInstance, field: 'nomeImg', 'error')} required">
 	<label for="nomeImg">
 		<g:message code="musica.nomeImg.label" default="Nome Img" />
-		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nomeImg" required="" value="${musicaInstance?.nomeImg}"/>
+	<input type = "file" name="imagem"/>
 
 </div>
 

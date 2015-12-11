@@ -70,10 +70,10 @@
 			
 				<g:if test="${produtoInstance?.nomeImg}">
 				<li class="fieldcontain">
-					<span id="nomeImg-label" class="property-label"><g:message code="produto.nomeImg.label" default="Nome Img" /></span>
+					<span id="foto-label" class="property-label"><g:message code="Produto.nomeImg.label" default="Produto" /></span>
 					
-						<span class="property-value" aria-labelledby="nomeImg-label"><g:fieldValue bean="${produtoInstance}" field="nomeImg"/></span>
-					
+						<span class="property-value" aria-labelledby="nomeImg-label">
+                                                    <img src="${createLinkTo(dir:'Produto/'+ produtoInstance.id, file:''+produtoInstance.nomeImg)}" alt="${produtoInstance.nomeImg}" title="${produtoInstance.nomeImg}" width="120px" height="120px"/></span>
 				</li>
 				</g:if>
 			
